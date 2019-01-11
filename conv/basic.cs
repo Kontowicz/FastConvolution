@@ -512,24 +512,41 @@ namespace conv
             {
                 case 1:
                     {
+                        for (int i = 0; i < image1[0].Length; i++)
+                        {
+                            imageD1[image1.Length - 1][i] += image2[0][i] * (float)0.1; //pionowo ok 100%
+                        }
+                        for (int i = 0; i < image1.Length; i++)
+                        {
+                            imageD1[i][image1[i].Length - 1] += image3[i][0] * (float)0.1; // 0; // dół ok 100%
+                        }
+
                         for (int i = 0; i < image2.Length; i++)
                         {
-                            // 1 
-                            imageD1[i][image2[0].Length - 1] += image2[i][0] * (float)0.1;
-                            imageD1[image2[0].Length - 1][i] += image3[0][i] * (float)0.1; 
+                            imageD2[i][image2[i].Length - 1] += image4[i][0] * (float)0.1;// 0; // dół ok 100%
+                        }
+                        for (int i = 0; i < image2[0].Length; i++)
+                        {
+                            imageD2[0][i] += image3[image3.Length - 1][i] * (float)0.1;// 0; //lewo ok 100 %
+                        }
 
-                            // 2
-                            imageD2[0][i] += image1[i][image2[0].Length - 1] * (float)0.1; 
-                            imageD2[i][image2[0].Length - 1] += image4[0][i] * (float)0.1; 
+                        for (int i = 0; i < image3.Length; i++)
+                        {
+                            imageD3[i][0] += image1[i][image1[i].Length - 1] * (float)0.1;//0; // góra
+                        }
+                        for (int i = 0; i < image3[0].Length; i++)
+                        {
+                            imageD3[image3.Length - 1][i] += image4[0][i] * (float)0.1;// 0; //prawo
+                        }
 
-                            // 3
-                            imageD3[i][0] += image1[image2[0].Length - 1][i] * (float)0.1; 
-                            imageD3[image2[0].Length - 1][i] += image4[i][0] * (float)0.1; 
+                        for (int i = 0; i < image4.Length; i++)
+                        {
+                            imageD4[i][0] += image2[i][image2[i].Length - 1] * (float)0.1; // 0; // góra
+                        }
 
-                            // 4
-                            imageD4[0][i] += image2[image2[0].Length - 1][i] * (float)0.1; 
-                            imageD4[i][0] += image3[i][image2[0].Length - 1] * (float)0.1;
-                        
+                        for (int i = 0; i < image4[0].Length; i++)
+                        {
+                            imageD4[0][i] += image3[image3.Length - 1][i] * (float)0.1;// 0; //lewo
                         }
                         break;
                     }
@@ -537,39 +554,39 @@ namespace conv
                     {
                         for (int i = 0; i < image1[0].Length; i++)
                         {
-                            image1[image1.Length - 1][i] = 0; //pionowo ok 100%
+                            image1[image1.Length - 1][i] += imageD2[0][i]*(float)0.1; //pionowo ok 100%
                         }
                         for (int i = 0; i < image1.Length; i++)
                         {
-                            image1[i][image1[i].Length - 1] = 0; // dół ok 100%
+                            image1[i][image1[i].Length - 1] += imageD3[i][0] * (float)0.1; // 0; // dół ok 100%
                         }
 
                         for (int i = 0; i < image2.Length; i++)
                         {
-                            image2[i][image2[i].Length - 1] = 0; // dół ok 100%
+                            image2[i][image2[i].Length - 1] += imageD4[i][0] * (float)0.1;// 0; // dół ok 100%
                         }
                         for (int i = 0; i < image2[0].Length; i++)
                         {
-                            image2[0][i] = 0; //lewo ok 100 %
+                            image2[0][i] += imageD3[image3.Length - 1][i] * (float)0.1;// 0; //lewo ok 100 %
                         }
 
                         for (int i = 0; i < image3.Length; i++)
                         {
-                            image3[i][0] = 0; // góra
+                            image3[i][0] += imageD1[i][image1[i].Length - 1] * (float)0.1;//0; // góra
                         }
                         for (int i = 0; i < image3[0].Length; i++)
                         {
-                            image3[image3.Length - 1][i] = 0; //prawo
+                            image3[image3.Length - 1][i] += imageD4[0][i] * (float)0.1;// 0; //prawo
                         }
 
                         for (int i = 0; i < image4.Length; i++)
                         {
-                            image4[i][0] = 0; // góra
+                            image4[i][0] += imageD2[i][image2[i].Length - 1] * (float)0.1; // 0; // góra
                         }
 
                         for (int i = 0; i < image4[0].Length; i++)
                         {
-                            image4[0][i] = 0; //lewo
+                            image4[0][i] += imageD3[image3.Length - 1][i] * (float)0.1;// 0; //lewo
                         }
 
                         break;
@@ -598,9 +615,9 @@ namespace conv
             divide();
             for (int i = 0; i < 100; i++)
             {
-           //     convolution();
+                convolution();
             }
-            repair(2);
+            //repair(2);
             connect();
             stop.Stop();
             System.Console.WriteLine(stop.Elapsed);
