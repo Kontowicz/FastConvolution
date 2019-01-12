@@ -52,11 +52,11 @@ namespace conv
             //System.Console.WriteLine(" razy.");
             //classic c = new classic(1024);
 
-            //c.save("C:/Users/Piotr/Desktop/test/bef.png");
+            //c.save("c:/users/piotr/desktop/test/bef.png");
             //c.test();
-            //c.save("C:/Users/Piotr/Desktop/test/new.png");
+            //c.save("c:/users/piotr/desktop/test/new.png");
 
-            basic b = new basic("C:/Users/Piotr/Desktop/test/bef.png");
+            basic b = new basic("C:/Users/Piotr/Desktop/t.png");
             b.test();
             //b.saveParts();
             b.save("C:/Users/Piotr/Desktop/test/new.png");

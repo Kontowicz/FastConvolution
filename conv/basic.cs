@@ -151,9 +151,9 @@ namespace conv
                         float left = 0;
                         float right = 0;
                         float center = 0;
-                        for (int i = 0; i < 512; i++)
+                        for (int i = 0; i < image1.Length; i++)
                         {
-                            for (int j = 0; j < 512; j++)
+                            for (int j = 0; j < image1[0].Length; j++)
                             {
                                 up = 0;
                                 down = 0;
@@ -161,19 +161,19 @@ namespace conv
                                 right = 0;
                                 center = 0;
 
-                                if (i - 1 >= 0 && i - 1 < 512 && j >= 0 && j < 512)
+                                if (i - 1 >= 0 && i - 1 < image1.Length && j >= 0 && j < image1[0].Length)
                                     up = image1[i - 1][j] * 0.1f;
 
-                                if (i + 1 >= 0 && i + 1 < 512 && j >= 0 && j < 512)
+                                if (i + 1 >= 0 && i + 1 < image1.Length && j >= 0 && j < image1[0].Length)
                                     down = image1[i + 1][j] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j - 1 >= 0 && j - 1 < 512)
+                                if (i >= 0 && i < image1.Length && j - 1 >= 0 && j - 1 < image1[0].Length)
                                     left = image1[i][j - 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j + 1 >= 0 && j + 1 < 512)
+                                if (i >= 0 && i < image1.Length && j + 1 >= 0 && j + 1 < image1[0].Length)
                                     right = image1[i][j + 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j >= 0 && j < 512)
+                                if (i >= 0 && i < image1.Length && j >= 0 && j < image1[0].Length)
                                     center = image1[i][j] * 0.6f;
 
                                 imageD1[i][j] = up + down + left + right + center;
@@ -188,9 +188,9 @@ namespace conv
                         float left = 0;
                         float right = 0;
                         float center = 0;
-                        for (int i = 0; i < 512; i++)
+                        for (int i = 0; i < image1.Length; i++)
                         {
-                            for (int j = 0; j < 512; j++)
+                            for (int j = 0; j < image1[0].Length; j++)
                             {
                                 up = 0;
                                 down = 0;
@@ -198,19 +198,19 @@ namespace conv
                                 right = 0;
                                 center = 0;
 
-                                if (i - 1 >= 0 && i - 1 < 512 && j >= 0 && j < 512)
+                                if (i - 1 >= 0 && i - 1 < image1.Length && j >= 0 && j < image1[0].Length)
                                     up = imageD1[i - 1][j] * 0.1f;
 
-                                if (i + 1 >= 0 && i + 1 < 512 && j >= 0 && j < 512)
+                                if (i + 1 >= 0 && i + 1 < image1.Length && j >= 0 && j < image1[0].Length)
                                     down = imageD1[i + 1][j] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j - 1 >= 0 && j - 1 < 512)
+                                if (i >= 0 && i < image1.Length && j - 1 >= 0 && j - 1 < image1[0].Length)
                                     left = imageD1[i][j - 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j + 1 >= 0 && j + 1 < 512)
+                                if (i >= 0 && i < image1.Length && j + 1 >= 0 && j + 1 < image1[0].Length)
                                     right = imageD1[i][j + 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j >= 0 && j < 512)
+                                if (i >= 0 && i < image1.Length && j >= 0 && j < image1[0].Length)
                                     center = imageD1[i][j] * 0.6f;
 
                                 image1[i][j] = up + down + left + right + center;
@@ -233,9 +233,9 @@ namespace conv
                         float right = 0;
                         float center = 0;
 
-                        for (int i = 0; i < 512; i++)
+                        for (int i = 0; i < image2.Length; i++)
                         {
-                            for (int j = 0; j < 512; j++)
+                            for (int j = 0; j < image2[0].Length; j++)
                             {
                                 up = 0;
                                 down = 0;
@@ -243,19 +243,19 @@ namespace conv
                                 right = 0;
                                 center = 0;
 
-                                if (i - 1 >= 0 && i - 1 < 512 && j >= 0 && j < 512)
+                                if (i - 1 >= 0 && i - 1 < image2.Length && j >= 0 && j < image2[0].Length)
                                     up = image2[i - 1][j] * 0.1f;
 
-                                if (i + 1 >= 0 && i + 1 < 512 && j >= 0 && j < 512)
+                                if (i + 1 >= 0 && i + 1 < image2.Length && j >= 0 && j < image2[0].Length)
                                     down = image2[i + 1][j] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j - 1 >= 0 && j - 1 < 512)
+                                if (i >= 0 && i < image2.Length && j - 1 >= 0 && j - 1 < image2[0].Length)
                                     left = image2[i][j - 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j + 1 >= 0 && j + 1 < 512)
+                                if (i >= 0 && i < image2.Length && j + 1 >= 0 && j + 1 < image2[0].Length)
                                     right = image2[i][j + 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j >= 0 && j < 512)
+                                if (i >= 0 && i < image2.Length && j >= 0 && j < image2[0].Length)
                                     center = image2[i][j] * 0.6f;
 
                                 imageD2[i][j] = up + down + left + right + center;
@@ -271,9 +271,10 @@ namespace conv
                         float right = 0;
                         float center = 0;
 
-                        for (int i = 0; i < 512; i++)
+
+                        for (int i = 0; i < image2.Length; i++)
                         {
-                            for (int j = 0; j < 512; j++)
+                            for (int j = 0; j < image2[0].Length; j++)
                             {
                                 up = 0;
                                 down = 0;
@@ -281,19 +282,19 @@ namespace conv
                                 right = 0;
                                 center = 0;
 
-                                if (i - 1 >= 0 && i - 1 < 512 && j >= 0 && j < 512)
+                                if (i - 1 >= 0 && i - 1 < image2.Length && j >= 0 && j < image2[0].Length)
                                     up = imageD2[i - 1][j] * 0.1f;
 
-                                if (i + 1 >= 0 && i + 1 < 512 && j >= 0 && j < 512)
+                                if (i + 1 >= 0 && i + 1 < image2.Length && j >= 0 && j < image2[0].Length)
                                     down = imageD2[i + 1][j] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j - 1 >= 0 && j - 1 < 512)
+                                if (i >= 0 && i < image2.Length && j - 1 >= 0 && j - 1 < image2[0].Length)
                                     left = imageD2[i][j - 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j + 1 >= 0 && j + 1 < 512)
+                                if (i >= 0 && i < image2.Length && j + 1 >= 0 && j + 1 < image2[0].Length)
                                     right = imageD2[i][j + 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j >= 0 && j < 512)
+                                if (i >= 0 && i < image2.Length && j >= 0 && j < image2[0].Length)
                                     center = imageD2[i][j] * 0.6f;
 
                                 image2[i][j] = up + down + left + right + center;
@@ -316,9 +317,9 @@ namespace conv
                         float right = 0;
                         float center = 0;
 
-                        for (int i = 0; i < 512; i++)
+                        for (int i = 0; i < image3.Length; i++)
                         {
-                            for (int j = 0; j < 512; j++)
+                            for (int j = 0; j < image3[0].Length; j++)
                             {
                                 up = 0;
                                 down = 0;
@@ -326,19 +327,19 @@ namespace conv
                                 right = 0;
                                 center = 0;
 
-                                if (i - 1 >= 0 && i - 1 < 512 && j >= 0 && j < 512)
+                                if (i - 1 >= 0 && i - 1 < image3.Length && j >= 0 && j < image3[0].Length)
                                     up = image3[i - 1][j] * 0.1f;
 
-                                if (i + 1 >= 0 && i + 1 < 512 && j >= 0 && j < 512)
+                                if (i + 1 >= 0 && i + 1 < image3.Length && j >= 0 && j < image3[0].Length)
                                     down = image3[i + 1][j] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j - 1 >= 0 && j - 1 < 512)
+                                if (i >= 0 && i < image3.Length && j - 1 >= 0 && j - 1 < image3[0].Length)
                                     left = image3[i][j - 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j + 1 >= 0 && j + 1 < 512)
+                                if (i >= 0 && i < image3.Length && j + 1 >= 0 && j + 1 < image3[0].Length)
                                     right = image3[i][j + 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j >= 0 && j < 512)
+                                if (i >= 0 && i < image3.Length && j >= 0 && j < image3[0].Length)
                                     center = image3[i][j] * 0.6f;
 
                                 imageD3[i][j] = up + down + left + right + center;
@@ -354,9 +355,9 @@ namespace conv
                         float right = 0;
                         float center = 0;
 
-                        for (int i = 0; i < 512; i++)
+                        for (int i = 0; i < image3.Length; i++)
                         {
-                            for (int j = 0; j < 512; j++)
+                            for (int j = 0; j < image3[0].Length; j++)
                             {
                                 up = 0;
                                 down = 0;
@@ -364,19 +365,19 @@ namespace conv
                                 right = 0;
                                 center = 0;
 
-                                if (i - 1 >= 0 && i - 1 < 512 && j >= 0 && j < 512)
+                                if (i - 1 >= 0 && i - 1 < image3.Length && j >= 0 && j < image3[0].Length)
                                     up = imageD3[i - 1][j] * 0.1f;
 
-                                if (i + 1 >= 0 && i + 1 < 512 && j >= 0 && j < 512)
+                                if (i + 1 >= 0 && i + 1 < image3.Length && j >= 0 && j < image3[0].Length)
                                     down = imageD3[i + 1][j] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j - 1 >= 0 && j - 1 < 512)
+                                if (i >= 0 && i < image3.Length && j - 1 >= 0 && j - 1 < image3[0].Length)
                                     left = imageD3[i][j - 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j + 1 >= 0 && j + 1 < 512)
+                                if (i >= 0 && i < image3.Length && j + 1 >= 0 && j + 1 < image3[0].Length)
                                     right = imageD3[i][j + 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j >= 0 && j < 512)
+                                if (i >= 0 && i < image3.Length && j >= 0 && j < image3[0].Length)
                                     center = imageD3[i][j] * 0.6f;
 
                                 image3[i][j] = up + down + left + right + center;
@@ -400,9 +401,9 @@ namespace conv
                         float right = 0;
                         float center = 0;
 
-                        for (int i = 0; i < 512; i++)
+                        for (int i = 0; i < image4.Length; i++)
                         {
-                            for (int j = 0; j < 512; j++)
+                            for (int j = 0; j < image4[0].Length; j++)
                             {
                                 up = 0;
                                 down = 0;
@@ -410,19 +411,19 @@ namespace conv
                                 right = 0;
                                 center = 0;
 
-                                if (i - 1 >= 0 && i - 1 < 512 && j >= 0 && j < 512)
+                                if (i - 1 >= 0 && i - 1 < image4.Length && j >= 0 && j < image4[0].Length)
                                     up = image4[i - 1][j] * 0.1f;
 
-                                if (i + 1 >= 0 && i + 1 < 512 && j >= 0 && j < 512)
+                                if (i + 1 >= 0 && i + 1 < image4.Length && j >= 0 && j < image4[0].Length)
                                     down = image4[i + 1][j] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j - 1 >= 0 && j - 1 < 512)
+                                if (i >= 0 && i < image4.Length && j - 1 >= 0 && j - 1 < image4[0].Length)
                                     left = image4[i][j - 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j + 1 >= 0 && j + 1 < 512)
+                                if (i >= 0 && i < image4.Length && j + 1 >= 0 && j + 1 < image4[0].Length)
                                     right = image4[i][j + 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j >= 0 && j < 512)
+                                if (i >= 0 && i < image4.Length && j >= 0 && j < image4[0].Length)
                                     center = image4[i][j] * 0.6f;
 
                                 imageD4[i][j] = up + down + left + right + center;
@@ -438,9 +439,9 @@ namespace conv
                         float right = 0;
                         float center = 0;
 
-                        for (int i = 0; i < 512; i++)
+                        for (int i = 0; i < image4.Length; i++)
                         {
-                            for (int j = 0; j < 512; j++)
+                            for (int j = 0; j < image4[0].Length; j++)
                             {
                                 up = 0;
                                 down = 0;
@@ -448,19 +449,19 @@ namespace conv
                                 right = 0;
                                 center = 0;
 
-                                if (i - 1 >= 0 && i - 1 < 512 && j >= 0 && j < 512)
+                                if (i - 1 >= 0 && i - 1 < image4.Length && j >= 0 && j < image4[0].Length)
                                     up = imageD4[i - 1][j] * 0.1f;
 
-                                if (i + 1 >= 0 && i + 1 < 512 && j >= 0 && j < 512)
+                                if (i + 1 >= 0 && i + 1 < image4.Length && j >= 0 && j < image4[0].Length)
                                     down = imageD4[i + 1][j] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j - 1 >= 0 && j - 1 < 512)
+                                if (i >= 0 && i < image4.Length && j - 1 >= 0 && j - 1 < image4[0].Length)
                                     left = imageD4[i][j - 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j + 1 >= 0 && j + 1 < 512)
+                                if (i >= 0 && i < image4.Length && j + 1 >= 0 && j + 1 < image4[0].Length)
                                     right = imageD4[i][j + 1] * 0.1f;
 
-                                if (i >= 0 && i < 512 && j >= 0 && j < 512)
+                                if (i >= 0 && i < image4.Length && j >= 0 && j < image4[0].Length)
                                     center = imageD4[i][j] * 0.6f;
 
                                 image4[i][j] = up + down + left + right + center;
@@ -595,12 +596,14 @@ namespace conv
         }
         public  void convolution()
         {
+            
             procesImage1(1);
             procesImage2(1);
             procesImage3(1);
             procesImage4(1);
             repair(1);
-
+            //repair(2);
+            
             procesImage1(2);
             procesImage2(2);
             procesImage3(2);
@@ -617,7 +620,6 @@ namespace conv
             {
                 convolution();
             }
-            //repair(2);
             connect();
             stop.Stop();
             System.Console.WriteLine(stop.Elapsed);

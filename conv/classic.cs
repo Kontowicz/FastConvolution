@@ -41,6 +41,8 @@ namespace conv
                         image[i,j] = 0;
                     else
                         image[i,j] = 1;
+
+                    image[i, j] = 1;
                 }
             }
         }
