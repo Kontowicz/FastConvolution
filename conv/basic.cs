@@ -528,7 +528,7 @@ namespace conv
                         }
                         for (int i = 0; i < image2[0].Length; i++)
                         {
-                            imageD2[0][i] += image3[image3.Length - 1][i] * (float)0.1;// 0; //lewo ok 100 %
+                            imageD2[0][i] += image1[image1.Length - 1][i] * (float)0.1;// 0; //lewo ok 100 %
                         }
 
                         for (int i = 0; i < image3.Length; i++)
@@ -568,7 +568,8 @@ namespace conv
                         }
                         for (int i = 0; i < image2[0].Length; i++)
                         {
-                            image2[0][i] += imageD3[image3.Length - 1][i] * (float)0.1;// 0; //lewo ok 100 %
+                            //image2[0][i] += imageD3[image3.Length - 1][i] * (float)0.1;// 0; //lewo ok 100 %
+                            image2[0][i] += imageD1[image1.Length - 1][i] * (float)0.1;// 0; //lewo ok 100 %
                         }
 
                         for (int i = 0; i < image3.Length; i++)
