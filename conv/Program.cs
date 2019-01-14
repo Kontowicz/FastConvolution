@@ -59,7 +59,7 @@ namespace conv
             basic b = new basic("c:/users/piotr/desktop/test/test/bef.png");
             b.test();
             //b.saveParts();
-            b.save("C:/Users/Piotr/Desktop/test/new.png");
+            b.save("C:/Users/Piotr/Desktop/test/new212.png");
 
             //test t = new test("C:/Users/Piotr/Desktop/random.png");
             //t.divide();

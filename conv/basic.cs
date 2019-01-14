@@ -140,45 +140,107 @@ namespace conv
             }
         }
 
+        #region image1
+        private void proces1Left(int caseType)
+        {
+            for (int i = 1; i < image1[0].Length - 1; i++)
+            {
+                imageD1[image1.Length - 1][i] = (image1[image1.Length - 1][i] * (float)0.6) + ((image1[image1.Length - 1][i+1] + image1[image1.Length - 1][i-1] + image1[image1.Length - 2][i]) * (float)0.1);
+            }
+        }
+
+        private void proces1Right(int caseType)
+        {
+            for (int i = 1; i < image1[0].Length - 1; i++)
+            {
+                imageD1[0][i] = (image1[0][i] * (float)0.6) + ((image1[0][i + 1] + image1[0][i - 1] + image1[1][i]) * (float)0.1);
+            }
+        }
+
+        private void proces1Top(int caseType)
+        {
+            for (int i = 1; i < image3.Length - 1; i++)
+            {
+                imageD1[i][0] = (image1[i][0] * (float)0.6) + ((image1[i+1][0] + image1[i-1][0] + image1[i][1]) * (float) 0.1);
+            }
+        }
+
+        private void proces1Bottom(int caseType)
+        {
+            for (int i = 1; i < image3.Length - 1; i++)
+            {
+                imageD1[i][image1[0].Length - 1] = (image1[i][image1[0].Length - 1] * (float)0.6) + ((image1[i + 1][image1[0].Length - 1] + image1[i - 1][image1[0].Length - 1] + image1[i][image1[0].Length - 1]) * (float)0.1);
+            }
+        }
+
+        private void proces1Corners(int caseType)
+        {
+            imageD1[0][0] = (image1[0][0] * (float)0.6) + ((image1[1][0] + image1[0][1]) * (float)0.1);
+
+            imageD1[0][image1[0].Length - 1] = (image1[0][image1[0].Length - 1] * (float)0.6) + ((image1[1][image1[0].Length - 1] + image1[0][image1[0].Length - 2]) * (float)0.1);
+
+            imageD1[image1.Length - 1][0] = (image1[image1.Length - 1][0] * (float)0.6) + ((image1[image1.Length - 2][0] + image1[image1.Length - 1][1]) * (float)0.1);
+
+            imageD1[image1.Length - 1][image1[0].Length - 1] = (image1[image1.Length - 1][image1[0].Length - 1] * (float)0.6) + ((image1[image1.Length - 2][image1[0].Length - 1] + image1[image1.Length - 1][image1[0].Length - 2]) * (float)0.1);
+        }
+
+        private void proces1Inside(int caseType)
+        {
+            for(int i = 1; i < image1.Length - 1; i++)
+            {
+                for(int j = 1; j < image1[0].Length - 1; j++)
+                {
+                    imageD1[i][j] = (image1[i][j] * (float)0.6) + ((image1[i+1][j] + image1[i-1][j] + image1[i][j+1] + image1[i][j-1]) * (float)0.1);
+                }
+            }
+        }
         private  void procesImage1(int caseType)
         {
+            //proces1Left(caseType);
+            //proces1Right(caseType);
             switch (caseType)
             {
                 case 1:
                     {
-                        float up = 0;
-                        float down = 0;
-                        float left = 0;
-                        float right = 0;
-                        float center = 0;
-                        for (int i = 0; i < image1.Length; i++)
-                        {
-                            for (int j = 0; j < image1[0].Length; j++)
-                            {
-                                up = 0;
-                                down = 0;
-                                left = 0;
-                                right = 0;
-                                center = 0;
+                        proces1Left(caseType);
+                        proces1Right(caseType);
+                        proces1Top(caseType);
+                        proces1Bottom(caseType);
+                        proces1Corners(caseType);
+                        proces1Inside(caseType);
+                        //float up = 0;
+                        //float down = 0;
+                        //float left = 0;
+                        //float right = 0;
+                        //float center = 0;
+                        //for (int i = 0; i < image1.Length; i++)
+                        //{
+                        //    for (int j = 0; j < image1[0].Length; j++)
+                        //    {
+                        //        up = 0;
+                        //        down = 0;
+                        //        left = 0;
+                        //        right = 0;
+                        //        center = 0;
 
-                                if (i - 1 >= 0 && i - 1 < image1.Length && j >= 0 && j < image1[0].Length)
-                                    up = image1[i - 1][j] * 0.1f;
+                        //        if (i - 1 >= 0 && i - 1 < image1.Length && j >= 0 && j < image1[0].Length)
+                        //            up = image1[i - 1][j] * 0.1f;
 
-                                if (i + 1 >= 0 && i + 1 < image1.Length && j >= 0 && j < image1[0].Length)
-                                    down = image1[i + 1][j] * 0.1f;
+                        //        if (i + 1 >= 0 && i + 1 < image1.Length && j >= 0 && j < image1[0].Length)
+                        //            down = image1[i + 1][j] * 0.1f;
 
-                                if (i >= 0 && i < image1.Length && j - 1 >= 0 && j - 1 < image1[0].Length)
-                                    left = image1[i][j - 1] * 0.1f;
+                        //        if (i >= 0 && i < image1.Length && j - 1 >= 0 && j - 1 < image1[0].Length)
+                        //            left = image1[i][j - 1] * 0.1f;
 
-                                if (i >= 0 && i < image1.Length && j + 1 >= 0 && j + 1 < image1[0].Length)
-                                    right = image1[i][j + 1] * 0.1f;
+                        //        if (i >= 0 && i < image1.Length && j + 1 >= 0 && j + 1 < image1[0].Length)
+                        //            right = image1[i][j + 1] * 0.1f;
 
-                                if (i >= 0 && i < image1.Length && j >= 0 && j < image1[0].Length)
-                                    center = image1[i][j] * 0.6f;
+                        //        if (i >= 0 && i < image1.Length && j >= 0 && j < image1[0].Length)
+                        //            center = image1[i][j] * 0.6f;
 
-                                imageD1[i][j] = up + down + left + right + center;
-                            }
-                        }
+                        //        imageD1[i][j] = up + down + left + right + center;
+                        //    }
+                        //}
                         break;
                     }
                 case 2:
@@ -220,8 +282,8 @@ namespace conv
                     }
             }
         }
-
-        private  void procesImage2(int caseType)
+        #endregion
+        private void procesImage2(int caseType)
         {
             switch (caseType)
             {
