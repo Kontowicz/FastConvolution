@@ -143,71 +143,174 @@ namespace conv
         #region image1
         private void proces1Left(int caseType)
         {
-            for (int i = 1; i < image1[0].Length - 1; i++)
-            {
-                imageD1[image1.Length - 1][i] = (image1[image1.Length - 1][i] * (float)0.6) + ((image1[image1.Length - 1][i+1] + image1[image1.Length - 1][i-1] + image1[image1.Length - 2][i]) * (float)0.1);
-            }
-        }
-
-        private void proces1Right(int caseType)
-        {
-            for (int i = 1; i < image1[0].Length - 1; i++)
-            {
-                imageD1[0][i] = (image1[0][i] * (float)0.6) + ((image1[0][i + 1] + image1[0][i - 1] + image1[1][i]) * (float)0.1);
-            }
-        }
-
-        private void proces1Top(int caseType)
-        {
-            for (int i = 1; i < image3.Length - 1; i++)
-            {
-                imageD1[i][0] = (image1[i][0] * (float)0.6) + ((image1[i+1][0] + image1[i-1][0] + image1[i][1]) * (float) 0.1);
-            }
-        }
-
-        private void proces1Bottom(int caseType)
-        {
-            for (int i = 1; i < image3.Length - 1; i++)
-            {
-                imageD1[i][image1[0].Length - 1] = (image1[i][image1[0].Length - 1] * (float)0.6) + ((image1[i + 1][image1[0].Length - 1] + image1[i - 1][image1[0].Length - 1] + image1[i][image1[0].Length - 1]) * (float)0.1);
-            }
-        }
-
-        private void proces1Corners(int caseType)
-        {
-            imageD1[0][0] = (image1[0][0] * (float)0.6) + ((image1[1][0] + image1[0][1]) * (float)0.1);
-
-            imageD1[0][image1[0].Length - 1] = (image1[0][image1[0].Length - 1] * (float)0.6) + ((image1[1][image1[0].Length - 1] + image1[0][image1[0].Length - 2]) * (float)0.1);
-
-            imageD1[image1.Length - 1][0] = (image1[image1.Length - 1][0] * (float)0.6) + ((image1[image1.Length - 2][0] + image1[image1.Length - 1][1]) * (float)0.1);
-
-            imageD1[image1.Length - 1][image1[0].Length - 1] = (image1[image1.Length - 1][image1[0].Length - 1] * (float)0.6) + ((image1[image1.Length - 2][image1[0].Length - 1] + image1[image1.Length - 1][image1[0].Length - 2]) * (float)0.1);
-        }
-
-        private void proces1Inside(int caseType)
-        {
-            for(int i = 1; i < image1.Length - 1; i++)
-            {
-                for(int j = 1; j < image1[0].Length - 1; j++)
-                {
-                    imageD1[i][j] = (image1[i][j] * (float)0.6) + ((image1[i+1][j] + image1[i-1][j] + image1[i][j+1] + image1[i][j-1]) * (float)0.1);
-                }
-            }
-        }
-        private  void procesImage1(int caseType)
-        {
-            //proces1Left(caseType);
-            //proces1Right(caseType);
             switch (caseType)
             {
                 case 1:
                     {
-                        proces1Left(caseType);
+                        for (int i = 1; i < image1[0].Length - 1; i++)
+                        {
+                            imageD1[image1.Length - 1][i] = (image1[image1.Length - 1][i] * (float)0.6) + ((image1[image1.Length - 1][i + 1] + image1[image1.Length - 1][i - 1] + image1[image1.Length - 2][i]) * (float)0.1);
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        for (int i = 1; i < image1[0].Length - 1; i++)
+                        {
+                            image1[image1.Length - 1][i] = (imageD1[imageD1.Length - 1][i] * (float)0.6) + ((imageD1[imageD1.Length - 1][i + 1] + imageD1[imageD1.Length - 1][i - 1] + imageD1[imageD1.Length - 2][i]) * (float)0.1);
+                        }
+                        break;
+                    }
+            }
+
+        }
+
+        private void proces1Right(int caseType)
+        {
+            switch(caseType)
+            {
+                case 1:
+                    {
+                        for (int i = 1; i < image1[0].Length - 1; i++)
+                        {
+                            imageD1[0][i] = (image1[0][i] * (float)0.6) + ((image1[0][i + 1] + image1[0][i - 1] + image1[1][i]) * (float)0.1);
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        for (int i = 1; i < image1[0].Length - 1; i++)
+                        {
+                            image1[0][i] = (imageD1[0][i] * (float)0.6) + ((imageD1[0][i + 1] + imageD1[0][i - 1] + imageD1[1][i]) * (float)0.1);
+                        }
+                        break;
+                    }
+            }
+
+        }
+
+        private void proces1Top(int caseType)
+        {
+            switch (caseType)
+            {
+                case 1:
+                    {
+                        for (int i = 1; i < image3.Length - 1; i++)
+                        {
+                            imageD1[i][0] = (image1[i][0] * (float)0.6) + ((image1[i + 1][0] + image1[i - 1][0] + image1[i][1]) * (float)0.1);
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        for (int i = 1; i < image3.Length - 1; i++)
+                        {
+                            image1[i][0] = (imageD1[i][0] * (float)0.6) + ((imageD1[i + 1][0] + imageD1[i - 1][0] + imageD1[i][1]) * (float)0.1);
+                        }
+                        break;
+                    }
+            }
+
+        }
+
+        private void proces1Bottom(int caseType)
+        {
+            switch (caseType)
+            {
+                case 1:
+                    {
+                        for (int i = 1; i < image3.Length - 1; i++)
+                        {
+                            imageD1[i][image1[0].Length - 1] = (image1[i][image1[0].Length - 1] * (float)0.6) + ((image1[i + 1][image1[0].Length - 1] + image1[i - 1][image1[0].Length - 1] + image1[i][image1[0].Length - 2]) * (float)0.1);
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        for (int i = 1; i < image3.Length - 1; i++)
+                        {
+                            image1[i][image1[0].Length - 1] = (imageD1[i][imageD1[0].Length - 1] * (float)0.6) + ((imageD1[i + 1][imageD1[0].Length - 1] + imageD1[i - 1][imageD1[0].Length - 1] + imageD1[i][imageD1[0].Length - 2]) * (float)0.1);
+                        }
+                        break;
+                    }
+            }
+
+        }
+
+        private void proces1Corners(int caseType)
+        {
+            switch (caseType)
+            {
+                case 1:
+                    {
+                        imageD1[0][0] = (image1[0][0] * (float)0.6) + ((image1[1][0] + image1[0][1]) * (float)0.1);
+
+                        imageD1[0][image1[0].Length - 1] = (image1[0][image1[0].Length - 1] * (float)0.6) + ((image1[1][image1[0].Length - 1] + image1[0][image1[0].Length - 2]) * (float)0.1);
+
+                        imageD1[image1.Length - 1][0] = (image1[image1.Length - 1][0] * (float)0.6) + ((image1[image1.Length - 2][0] + image1[image1.Length - 1][1]) * (float)0.1);
+
+                        imageD1[image1.Length - 1][image1[0].Length - 1] = (image1[image1.Length - 1][image1[0].Length - 1] * (float)0.6) + ((image1[image1.Length - 2][image1[0].Length - 1] + image1[image1.Length - 1][image1[0].Length - 2]) * (float)0.1);
+                        break;
+                    }
+                case 2:
+                    {
+                        image1[0][0] = (imageD1[0][0] * (float)0.6) + ((imageD1[1][0] + imageD1[0][1]) * (float)0.1);
+
+                        image1[0][image1[0].Length - 1] = (imageD1[0][imageD1[0].Length - 1] * (float)0.6) + ((imageD1[1][imageD1[0].Length - 1] + imageD1[0][imageD1[0].Length - 2]) * (float)0.1);
+
+                        image1[image1.Length - 1][0] = (imageD1[imageD1.Length - 1][0] * (float)0.6) + ((imageD1[imageD1.Length - 2][0] + imageD1[imageD1.Length - 1][1]) * (float)0.1);
+
+                        image1[image1.Length - 1][image1[0].Length - 1] = (imageD1[imageD1.Length - 1][imageD1[0].Length - 1] * (float)0.6) + ((imageD1[imageD1.Length - 2][imageD1[0].Length - 1] + imageD1[imageD1.Length - 1][imageD1[0].Length - 2]) * (float)0.1);
+                        break;
+                    }
+            }
+
+        }
+
+        private void proces1Inside(int caseType)
+        {
+            switch (caseType)
+            {
+                case 1:
+                    {
+                        for (int i = 1; i < image1.Length - 1; i++)
+                        {
+                            for (int j = 1; j < image1[0].Length - 1; j++)
+                            {
+                                imageD1[i][j] = (image1[i][j] * (float)0.6) + ((image1[i + 1][j] + image1[i - 1][j] + image1[i][j + 1] + image1[i][j - 1]) * (float)0.1);
+                            }
+                        }
+                        break;
+                    }
+                case 2:
+                    {
+                        for (int i = 1; i < image1.Length - 1; i++)
+                        {
+                            for (int j = 1; j < image1[0].Length - 1; j++)
+                            {
+                                image1[i][j] = (imageD1[i][j] * (float)0.6) + ((imageD1[i + 1][j] + imageD1[i - 1][j] + imageD1[i][j + 1] + imageD1[i][j - 1]) * (float)0.1);
+                            }
+                        }
+                        break;
+                    }
+            }
+
+        }
+        private  void procesImage1(int caseType)
+        {
+            proces1Left(caseType);
                         proces1Right(caseType);
                         proces1Top(caseType);
                         proces1Bottom(caseType);
                         proces1Corners(caseType);
                         proces1Inside(caseType);
+            //proces1Left(caseType);
+            //proces1Right(caseType);
+            /*switch (caseType)
+            {
+                case 1:
+                    {
+  
                         //float up = 0;
                         //float down = 0;
                         //float left = 0;
@@ -280,7 +383,7 @@ namespace conv
                         }
                         break;
                     }
-            }
+            }*/
         }
         #endregion
         private void procesImage2(int caseType)
