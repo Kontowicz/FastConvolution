@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Drawing;
 using System.Linq;
 using System.Runtime.CompilerServices;
 using System.Text;
@@ -32,11 +33,20 @@ namespace conv
 
         private void fill()
         {
-            for (int i = 0; i < this.size; i++)
+            for (int i = 0; i < 1024; i++)
             {
-                for (int j = 0; j < this.size; j++)
+                var imod = i % (128 * 2);
+
+                for (int j = 0; j < 1024; j++)
                 {
-                    image[i][j] = i;
+                    var jmod = j % (128 * 2);
+
+                    if (imod < 128 && jmod < 128)
+                        image[i][j] = 0;
+                    else if (imod >= 128 && jmod >= 128)
+                        image[i][j] = 0;
+                    else
+                        image[i][j] = 1;
                 }
             }
         }
@@ -84,6 +94,8 @@ namespace conv
                 for (int j = 1; j < 1023; ++j)
                 {
                     destination[i][j] = (image[i][j] * (float)0.6) + ((image[i - 1][j] + image[i + 1][j] + image[i][j - 1] + image[i][j + 1]) * (float)0.1);
+                    if ((int)destination[i][j] * 255 > 255)
+                        System.Console.WriteLine("procesA i: {0} j: {1}", i, j);
                 }
             });
         }
@@ -192,10 +204,12 @@ namespace conv
         {
             return Task.Run(() =>
             {
-                destination[0][0] = (image[0][0] * (float)0.6) + ((image[0][1] + image[1][0]) * (float)0.1);
-                destination[0][1023] = (image[0][1023] * (float)0.6) + ((image[0][1022] + image[1][1023]) * (float)0.1);
-                destination[1023][0] = (image[1023][0] * (float)0.6) + ((image[1023][1] + image[1022][0]) * (float)0.1);
-                destination[1023][1023] = (image[1023][1023] * (float)0.6) + ((image[1023][1022] + image[1022][1023]) * (float)0.1);
+                image[0][0] = (destination[0][0] * (float)0.6) + ((destination[0][1] + destination[1][0]) * (float)0.1);
+                image[0][1023] = (destination[0][1023] * (float)0.6) + ((destination[0][1022] + destination[1][1023]) * (float)0.1);
+                image[1023][0] = (destination[1023][0] * (float)0.6) + ((destination[1023][1] + destination[1022][0]) * (float)0.1);
+                image[1023][1023] = (destination[1023][1023] * (float)0.6) + ((destination[1023][1022] + destination[1022][1023]) * (float)0.1);
+
+
             });
         }
         [MethodImpl(MethodImplOptions.AggressiveInlining)]
@@ -203,11 +217,39 @@ namespace conv
         {
             return Task.Run(() =>
             {
-                image[0][0] = (destination[0][0] * (float)0.6) + ((destination[0][1] + destination[1][0]) * (float)0.1);
-                image[0][1023] = (destination[0][1023] * (float)0.6) + ((destination[0][1022] + destination[1][1023]) * (float)0.1);
-                image[1023][0] = (destination[1023][0] * (float)0.6) + ((destination[1023][1] + destination[1022][0]) * (float)0.1);
-                image[1023][1023] = (destination[1023][1023] * (float)0.6) + ((destination[1023][1022] + destination[1022][1023]) * (float)0.1);
+                destination[0][0] = (image[0][0] * (float)0.6) + ((image[0][1] + image[1][0]) * (float)0.1);
+                destination[0][1023] = (image[0][1023] * (float)0.6) + ((image[0][1022] + image[1][1023]) * (float)0.1);
+                destination[1023][0] = (image[1023][0] * (float)0.6) + ((image[1023][1] + image[1022][0]) * (float)0.1);
+                destination[1023][1023] = (image[1023][1023] * (float)0.6) + ((image[1023][1022] + image[1022][1023]) * (float)0.1);
             });
+        }
+
+        public void save(string path)
+        {
+            var toSave = new Bitmap(1024, 1024);
+
+            for (int i = 0; i < 1024; i++)
+            {
+                for (int j = 0; j < 1024; j++)
+                {
+                    var rgb = (int)(image[i][j] * 255);
+
+                    Color color;
+                    try
+                    {
+                        color = Color.FromArgb(rgb, rgb, rgb);
+                        toSave.SetPixel(i, j, color);
+
+                    }
+                    catch(Exception ex)
+                    {
+                        System.Console.WriteLine("i: {0} j: {1}", i, j);
+                    }
+                    
+                }
+            }
+
+            toSave.Save(path);
         }
     }
 }

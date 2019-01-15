@@ -36,13 +36,11 @@ namespace conv
                     var jmod = j % (128 * 2);
 
                     if (imod < 128 && jmod < 128)
-                        image[i,j] = 0;
+                        this.image[i,j] = 0;
                     else if (imod >= 128 && jmod >= 128)
-                        image[i,j] = 0;
+                        this.image[i,j] = 0;
                     else
-                        image[i,j] = 1;
-
-                    image[i, j] = 1;
+                        this.image[i,j] = 1;
                 }
             }
         }
@@ -113,6 +111,7 @@ namespace conv
 
             toSave.Save(path);
         }
+
     }
 }
 

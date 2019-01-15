@@ -11,6 +11,7 @@ namespace conv
     class basic
     {
         Bitmap bitmap;
+        public long time;
         private float[][] image;
         private float[][] destination;
 
@@ -741,7 +742,7 @@ namespace conv
             }
             connect();
             stop.Stop();
-            System.Console.WriteLine(stop.Elapsed);
+            time = stop.ElapsedMilliseconds;
         }
 
         public void save(string path)

@@ -26,11 +26,20 @@ namespace conv
 
         private void fill()
         {
-            for (int i = 0; i < this.size; i++)
+            for (int i = 0; i < 1024; i++)
             {
-                for (int j = 0; j < this.size; j++)
+                var imod = i % (256 * 2);
+
+                for (int j = 0; j < 1024; j++)
                 {
-                    image[i][j] = i;
+                    var jmod = j % (256 * 2);
+
+                    if (imod < 256 && jmod < 256)
+                        image[i][ j] = 0;
+                    else if (imod >= 256 && jmod >= 256)
+                        image[i][ j] = 0;
+                    else
+                        image[i][j] = 1;
                 }
             }
         }
@@ -46,8 +55,6 @@ namespace conv
 
             for (int i = 0; i < 100; i++)
             {
-                //var p5 = procesPartFirst(destination, image);
-                //var p6 = procesPartSecond(destination, image);
                 var p = corners(destination, image);
                 var p1 = top(destination, image);
                 var p2 = bottom(destination, image);
@@ -59,11 +66,7 @@ namespace conv
                 p2.Wait();
                 p3.Wait();
                 p4.Wait();
-                //p5.Wait();
-                //p6.Wait();
 
-                //var pp5 = procesPartFirst(image, destination);
-                //var pp6 = procesPartSecond(image, destination);
                 var pp = corners(image, destination);
                 var pp1 = top(image, destination);
                 var pp2 = bottom(image, destination);
@@ -75,8 +78,6 @@ namespace conv
                 pp2.Wait();
                 pp3.Wait();
                 pp4.Wait();
-                //pp5.Wait();
-                //pp6.Wait();
             }
             stopwatch.Stop();
             time = (long)stopwatch.ElapsedMilliseconds;
