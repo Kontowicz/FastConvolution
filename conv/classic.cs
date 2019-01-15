@@ -5,7 +5,7 @@ using System.Drawing;
 using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
-// Po 15 w tej sali.
+
 // Zapisywanie obrazków 
 //  Dzielenie 
 // 8.00 - 16.40, fozina z wyjątkiem  9.30 - 12. 
