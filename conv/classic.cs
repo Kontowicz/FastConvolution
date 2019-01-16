@@ -10,6 +10,8 @@ using System.Threading.Tasks;
 //  Dzielenie 
 // 8.00 - 16.40, fozina z wyjątkiem  9.30 - 12. 
 
+    //time skewing impelentaacja 
+    //halo
 namespace conv
 {
     class classic
