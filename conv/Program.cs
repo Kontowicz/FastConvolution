@@ -62,7 +62,7 @@ namespace conv
             //System.Console.Write(Math.Round((a / 10) / (c / 10), 2));
             //System.Console.WriteLine(" razy.");
 
-            System.Console.Write("Podejście asynchroniczne, obliczenia z optymalizacją kompilatora, zmienne i metody statyczne : {0}", Math.Round(d / 10,2));
+            System.Console.Write("Podejście asynchroniczne, obliczenia z optymalizacją kompilatora, zmienne i metody statyczne : {0}", Math.Round(d / 1000,2));
             System.Console.Write(" sekund, było szybsze: ");
             System.Console.Write(Math.Round((a / 10) / (d / 10), 2));
             System.Console.WriteLine(" razy.");
